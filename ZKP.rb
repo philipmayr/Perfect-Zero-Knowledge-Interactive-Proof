@@ -35,7 +35,9 @@ puts
 # number of proofs accepted
 proof_accepted_counter = 0
 
-n.times do
+n.times do |iteration|
+    puts ">: Round " + (iteration + 1).to_s
+    
     # prover:
     
     # random number
@@ -93,9 +95,10 @@ n.times do
     
     puts
     puts "z² ≡ x²ᵝr² ≡ yᵝs (mod N)"
-    puts "        z² ≡ " + z².to_i.to_s + " (mod N)"
-    puts "     x²ᵝr² ≡ " + ((x ** (2 * β)) * (r * r)).to_i.to_s + " (mod N)"
-    puts "       yᵝs ≡ " + ((y ** β) * s).to_i.to_s + " (mod N)"
+    padding = "  " # * (z² % N).to_i.to_s.length
+    puts "        z² ≡ " + (z² % N).to_i.to_s + padding + " (mod N)"
+    puts "     x²ᵝr² ≡ " + ((x ** (2 * β)) * (r * r) % N).to_i.to_s + padding + " (mod N)"
+    puts "       yᵝs ≡ " + (((y ** β) * s) % N).to_i.to_s + padding + " (mod N)"
     puts
 end
 
