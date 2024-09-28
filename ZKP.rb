@@ -75,18 +75,18 @@ n.times do |iteration|
     if β == 0
         # z² ≡ s (mod N) - z squared is congruent to s modulo N
         if z² == s % N
-            puts ">: proof accepted (β = 0)"
+            puts "➤➤ proof accepted (β æ 0)"
             proof_accepted_counter += 1
         elsif
-            puts ">: proof rejected (β = 0)"
+            puts "➤➤ proof rejected (β æ 0)"
         end
     elsif β == 1
         # z² ≡ ys (mod N) - z squared is congruent to y times s, modulo N
         if z² == (y * s) % N
-            puts ">: proof accepted (β = 1)"
+            puts "➤➤ proof accepted (β æ 1)"
             proof_accepted_counter += 1
         elsif
-            puts ">: proof rejected (β = 1)"
+            puts "➤➤ proof rejected (β æ 1)"
         end
     end
     
