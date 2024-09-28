@@ -16,10 +16,11 @@ puts "N æ " + N.to_i.to_s + " (" + p.to_s + " ⋅ " + q.to_s + ")"
 puts
 
 # square modulo N (quadratic residue)
-print "Enter a square number modulo " + N.to_s + ": "
+print "Enter a quadratic residue modulo " + N.to_s + ": "
 y = gets.chomp.to_i
 # square root of square modulo N
-x = Math.sqrt(y % N).to_i
+print "Enter a square root of " + y.to_s + " mod " + N.to_s + ": "
+x = gets.chomp.to_i
 
 # the prover seeks to show that y is a square modulo N
 # x² ≡ y (mod N)
