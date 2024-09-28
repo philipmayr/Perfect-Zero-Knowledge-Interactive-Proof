@@ -11,7 +11,7 @@ N = p * q
 
 puts
 
-puts "N æ " + N.to_i.to_s + " (" + p.to_s + " ⋅ " + q.to_s + ")"
+puts "N æ " + N.to_i.to_s + " æ " + p.to_s + " ⋅ " + q.to_s
 
 puts
 
