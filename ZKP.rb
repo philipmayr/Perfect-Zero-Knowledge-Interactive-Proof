@@ -1,35 +1,54 @@
-# Zero-Knowledge Proof
+# Perfect Zero-Knowledge Proof
 
-n = 80
+# get two primes
+print "Enter first prime number: "
+p = gets.chomp.to_i
+print "Enter second prime number: "
+q = gets.chomp.to_i
 
-proof_accepted_counter = 0
-
-p = 7
-q = 37
-
+# product of the two primes
 N = p * q
+
+puts
 
 puts "N: " + N.to_s
 
-y = 64
-x = 8
+puts
+
+# square modulo N
+print "Enter a square modulo " + N.to_s + ": "
+y = gets.chomp.to_i
+# square root of square modulo N
+x = Math.sqrt(y)
 
 # the prover seeks to show that y is a square modulo N
 # x² ≡ y (mod N)
 
+puts
+
+# number of challenge-response rounds
+print "Enter number of challenge-response rounds: "
+n = gets.chomp.to_i
+
+# number of proofs accepted
+proof_accepted_counter = 0
+
 n.times do
     # prover:
     
-    r = 22 % N
+    # random number
+    r = rand(10000) % N
     
     puts "r: " + r.to_s
     
+    # compute s ≡ r² (mod N) - s is congruent to r squared modulo N
     s = (r * r) % N
     
     puts "s: " + s.to_s
 
     # verifier:
     
+    # random value β ∈ {0, 1} (Beta is an random element of the set {0, 1})
     β = rand(2)
     
     puts "β: " + β.to_s
@@ -42,13 +61,15 @@ n.times do
         z = (x * r) % N
     end
     
-    puts "z: " + z.to_s
+    puts "z: " + z.to_i.to_s
     
     # verifier:
 
+    # compute z² modulo N
     z² = (z * z) % N
     
     if β == 0
+        # z² ≡ s (mod N) - z squared is congruent to s modulo N
         if z² == s % N
             puts ">: proof accepted (β = 0)"
             proof_accepted_counter += 1
@@ -56,6 +77,7 @@ n.times do
             puts ">: proof rejected (β = 0)"
         end
     elsif β == 1
+        # z² ≡ ys (mod N) - z squared is congruent to y times s, modulo N
         if z² == (y * s) % N
             puts ">: proof accepted (β = 1)"
             proof_accepted_counter += 1
@@ -63,6 +85,9 @@ n.times do
             puts ">: proof rejected (β = 1)"
         end
     end
+    
+    # if y is a square modulo N, then z ≡ xᵝr (mod N)
+    # so z² ≡ x²ᵝr² ≡ yᵝs (mod N)
     
     puts
 end
