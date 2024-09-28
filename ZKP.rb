@@ -36,12 +36,12 @@ puts
 proof_accepted_counter = 0
 
 n.times do |iteration|
-    puts ">: Round " + (iteration + 1).to_s
+    puts "n: " + (iteration + 1).to_s
     
     # prover:
     
     # random number
-    r = rand(10) % N
+    r = rand(10000) % N
     
     puts "r: " + r.to_s
     
@@ -95,7 +95,7 @@ n.times do |iteration|
     
     puts
     puts "z² ≡ x²ᵝr² ≡ yᵝs (mod N)"
-    padding = "  " # * (z² % N).to_i.to_s.length
+    padding = " " * (3 - (z² % N).to_i.to_s.length) # * (z² % N).to_i.to_s.length
     puts "        z² ≡ " + (z² % N).to_i.to_s + padding + " (mod N)"
     puts "     x²ᵝr² ≡ " + ((x ** (2 * β)) * (r * r) % N).to_i.to_s + padding + " (mod N)"
     puts "       yᵝs ≡ " + (((y ** β) * s) % N).to_i.to_s + padding + " (mod N)"
@@ -103,4 +103,7 @@ n.times do |iteration|
 end
 
 puts "proof rejected " + (n - proof_accepted_counter).to_s + " times"
-puts "proof accepted " + proof_accepted_counter.to_s + " times"
+print "proof accepted " + proof_accepted_counter.to_s + " times"
+if proof_accepted_counter == n
+    puts " (every time)"
+end    
