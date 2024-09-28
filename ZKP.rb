@@ -95,7 +95,12 @@ n.times do |iteration|
     
     puts
     puts "z² ≡ x²ᵝr² ≡ yᵝs (mod N)"
-    padding = " " * (3 - (z² % N).to_i.to_s.length) # * (z² % N).to_i.to_s.length
+    length = (z² % N).to_i.to_s.length
+    if length > 3
+        padding = ""
+    else
+        padding = " " * (3 - (z² % N).to_i.to_s.length)
+    end
     puts "        z² ≡ " + (z² % N).to_i.to_s + padding + " (mod N)"
     puts "     x²ᵝr² ≡ " + ((x ** (2 * β)) * (r * r) % N).to_i.to_s + padding + " (mod N)"
     puts "       yᵝs ≡ " + (((y ** β) * s) % N).to_i.to_s + padding + " (mod N)"
