@@ -11,12 +11,12 @@ N = p * q
 
 puts
 
-puts "N: " + N.to_s
+puts "N = " + N.to_s + " (" + p.to_s + " ⋅ " + q.to_s + ")"
 
 puts
 
 # square modulo N
-print "Enter a square modulo " + N.to_s + ": "
+print "Enter a square number modulo " + N.to_s + ": "
 y = gets.chomp.to_i
 # square root of square modulo N
 x = Math.sqrt(y)
@@ -29,6 +29,8 @@ puts
 # number of challenge-response rounds
 print "Enter number of challenge-response rounds: "
 n = gets.chomp.to_i
+
+puts
 
 # number of proofs accepted
 proof_accepted_counter = 0
