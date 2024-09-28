@@ -92,6 +92,11 @@ n.times do
     # so z² ≡ x²ᵝr² ≡ yᵝs (mod N)
     
     puts
+    puts "z² ≡ x²ᵝr² ≡ yᵝs (mod N)"
+    puts "        z² ≡ " + z².to_i.to_s + " (mod N)"
+    puts "     x²ᵝr² ≡ " + ((x ** (2 * β)) * (r * r)).to_i.to_s + " (mod N)"
+    puts "       yᵝs ≡ " + ((y ** β) * s).to_i.to_s + " (mod N)"
+    puts
 end
 
 puts "proof rejected " + (n - proof_accepted_counter).to_s + " times"
