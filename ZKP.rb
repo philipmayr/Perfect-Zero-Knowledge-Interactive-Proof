@@ -15,7 +15,7 @@ puts "N æ " + N.to_i.to_s + " (" + p.to_s + " ⋅ " + q.to_s + ")"
 
 puts
 
-# square modulo N (quadratic candidate)
+# square modulo N (quadratic residue)
 print "Enter a square number modulo " + N.to_s + ": "
 y = gets.chomp.to_i
 # square root of square modulo N
