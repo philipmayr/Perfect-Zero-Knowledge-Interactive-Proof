@@ -2,6 +2,8 @@
 
 n = 80
 
+proof_accepted_counter = 0
+
 p = 7
 q = 37
 
@@ -49,12 +51,14 @@ n.times do
     if β == 0
         if z² == s % N
             puts ">: proof accepted (β = 0)"
+            proof_accepted_counter += 1
         elsif
             puts ">: proof rejected (β = 0)"
         end
     elsif β == 1
         if z² == (y * s) % N
             puts ">: proof accepted (β = 1)"
+            proof_accepted_counter += 1
          elsif
             puts ">: proof rejected (β = 1)"
         end
@@ -62,3 +66,6 @@ n.times do
     
     puts
 end
+
+puts "proof rejected " + (n - proof_accepted_counter).to_s + " times"
+puts "proof accepted " + proof_accepted_counter.to_s + " times"
