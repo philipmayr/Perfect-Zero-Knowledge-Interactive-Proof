@@ -9,7 +9,7 @@ N = p * q
 
 puts "N: " + N.to_s
 
-y = 65
+y = 64
 x = 8
 
 # the prover seeks to show that y is a square modulo N
