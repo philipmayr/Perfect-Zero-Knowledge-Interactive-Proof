@@ -39,7 +39,7 @@ n.times do
     # prover:
     
     # random number
-    r = rand(10000) % N
+    r = rand(10) % N
     
     puts "r: " + r.to_s
     
@@ -83,7 +83,7 @@ n.times do
         if z² == (y * s) % N
             puts ">: proof accepted (β = 1)"
             proof_accepted_counter += 1
-         elsif
+        elsif
             puts ">: proof rejected (β = 1)"
         end
     end
