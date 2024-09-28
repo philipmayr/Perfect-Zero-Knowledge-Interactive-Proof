@@ -11,7 +11,7 @@ N = p * q
 
 puts
 
-puts "N = " + N.to_s + " (" + p.to_s + " ⋅ " + q.to_s + ")"
+puts "N æ " + N.to_i.to_s + " (" + p.to_s + " ⋅ " + q.to_s + ")"
 
 puts
 
@@ -27,7 +27,7 @@ x = Math.sqrt(y)
 puts
 
 # number of challenge-response rounds
-print "Enter number of challenge-response rounds: "
+print "Enter number of challenge-response rounds (n): "
 n = gets.chomp.to_i
 
 puts
