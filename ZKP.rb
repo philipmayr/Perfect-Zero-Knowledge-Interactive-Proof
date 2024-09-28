@@ -19,7 +19,7 @@ puts
 print "Enter a square number modulo " + N.to_s + ": "
 y = gets.chomp.to_i
 # square root of square modulo N
-x = Math.sqrt(y)
+x = (Math.sqrt(y) % N).to_i
 
 # the prover seeks to show that y is a square modulo N
 # x² ≡ y (mod N)
