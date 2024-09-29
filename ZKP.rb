@@ -1,4 +1,31 @@
+module  QuadraticResiduosityDeciders
+
+    # Prime Modulus Quadratic Residuosity Decider Algorithm
+    
+    def decide_prime_modulus_quadratic_residuosity(p, x)
+        b = x ** (((p - 1) / 2) % p)
+        
+        if b == 1
+            return true 
+        else 
+            return false
+        end
+    end
+    
+    # Known Factorization Composite Modulus Quadratic Residuosity Decider Algorithm
+    
+    def decide_known_factorization_composite_modulus_quadratic_residuosity(p, q, x)
+        if decide_prime_modulus_quadratic_residuosity(p, x) and decide_prime_modulus_quadratic_residuosity(q, x)
+            return true
+        else
+            return false
+        end
+    end
+end
+
 # Perfect Zero-Knowledge Proof
+
+include QuadraticResiduosityDeciders
 
 # get two primes
 print "Enter first prime number: "
@@ -13,11 +40,26 @@ puts
 
 puts "N æ " + N.to_i.to_s + " æ " + p.to_s + " ⋅ " + q.to_s
 
+loop do
+    puts
+    
+    # get square modulo N (quadratic residue)
+    print "Enter a quadratic residue modulo " + N.to_s + ": "
+    y = gets.chomp.to_i
+    
+    puts
+    
+    # check residuosity
+    if decide_known_factorization_composite_modulus_quadratic_residuosity(p, q, y)
+        puts y.to_s + " is a quadratic residue modulo " + N.to_s
+        break
+    else
+        puts y.to_s + " is a quadratic nonresidue modulo " + N.to_s
+    end
+end
+
 puts
 
-# square modulo N (quadratic residue)
-print "Enter a quadratic residue modulo " + N.to_s + ": "
-y = gets.chomp.to_i
 # square root of square modulo N
 print "Enter a square root of " + y.to_s + " mod " + N.to_s + ": "
 x = gets.chomp.to_i
