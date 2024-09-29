@@ -40,21 +40,29 @@ puts
 
 puts "N æ " + N.to_i.to_s + " æ " + p.to_s + " ⋅ " + q.to_s
 
+puts
+    
+# get square modulo N (quadratic residue)
+print "Enter a quadratic residue modulo " + N.to_s + ": "
+y = gets.chomp.to_i
+
+puts
+
 loop do
-    puts
-    
-    # get square modulo N (quadratic residue)
-    print "Enter a quadratic residue modulo " + N.to_s + ": "
-    y = gets.chomp.to_i
-    
-    puts
-    
     # check residuosity
     if decide_known_factorization_composite_modulus_quadratic_residuosity(p, q, y)
-        puts y.to_s + " is a quadratic residue modulo " + N.to_s
+        puts y.to_s + " is a quadratic residue modulo " + N.to_s + "."
         break
     else
-        puts y.to_s + " is a quadratic nonresidue modulo " + N.to_s
+        puts y.to_s + " is a quadratic nonresidue modulo " + N.to_s + "."
+        
+        puts
+    
+        # get square modulo N (quadratic residue)
+        print "Enter a quadratic residue modulo " + N.to_s + ": "
+        y = gets.chomp.to_i
+        
+        puts
     end
 end
 
