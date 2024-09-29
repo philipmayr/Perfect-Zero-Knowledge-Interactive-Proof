@@ -3,7 +3,7 @@ module  QuadraticResiduosityDeciders
     # Prime Modulus Quadratic Residuosity Decider Algorithm
     
     def decide_prime_modulus_quadratic_residuosity(p, x)
-        b = x ** (((p - 1) / 2) % p)
+        b = (x ** ((p - 1) / 2)) % p
         
         if b == 1
             return true 
