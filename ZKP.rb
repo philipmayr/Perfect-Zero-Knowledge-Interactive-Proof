@@ -1,9 +1,33 @@
-module  QuadraticResiduosityDeciders
+module ModularExponentiator
+    def exponentiate_modularly(base, index, modulus)
+        residue = 1
+        
+        base %= modulus
+        
+        if base == 0
+            return 0
+        end
+            
+        while index > 0
+            if index & 1 == 1
+                residue = (residue * base) % modulus
+            end
+                
+            base = (base * base) % modulus
+            index >>= 1
+        end
+        
+        return residue;   
+    end
+end
 
+module QuadraticResiduosityDeciders
+    
     # Prime Modulus Quadratic Residuosity Decider Algorithm
     
     def decide_prime_modulus_quadratic_residuosity(p, x)
-        b = (x ** ((p - 1) / 2)) % p
+        i = (p - 1) / 2
+        b = exponentiate_modularly(x, i, p)
         
         if b == 1
             return true 
@@ -26,6 +50,7 @@ end
 # Perfect Zero-Knowledge Proof
 
 include QuadraticResiduosityDeciders
+include ModularExponentiator
 
 # get two primes
 print "Enter first prime number: "
