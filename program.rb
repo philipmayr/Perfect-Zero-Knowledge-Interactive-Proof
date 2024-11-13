@@ -5,14 +5,14 @@ module ModularExponentiator
 
         if base > modulus base %= modulus
         if index == 1 return base
-    
+
         int residue = 1
-            
+        
         while index > 0
             if index & 1 == 1
                 residue = (residue * base) % modulus
             end
-                
+            
             base = (base * base) % modulus
             index >>= 1
         end
@@ -26,7 +26,7 @@ module QuadraticResiduosityDeciders
     # Prime Modulus Quadratic Residuosity Decider Algorithm
     
     def decide_prime_modulus_quadratic_residuosity(p, x)
-        i = (p - 1) / 2
+        i = (p - 1) >> 1
         b = exponentiate_modularly(x, i, p)
         
         if b == 1
@@ -82,7 +82,7 @@ loop do
         puts y.to_s + " is a quadratic nonresidue modulo " + N.to_s + "."
         
         puts
-    
+        
         # get square modulo N (quadratic residue)
         print "Enter a quadratic residue modulo " + N.to_s + ": "
         y = gets.chomp.to_i
@@ -185,6 +185,6 @@ end
 
 puts "proof rejected " + (n - proof_accepted_counter).to_s + " times"
 print "proof accepted " + proof_accepted_counter.to_s + " times"
-if proof_accepted_counter == n
-    puts " (every time)"
-end    
+puts " (every time)" if proof_accepted_counter == n
+
+end
