@@ -1,10 +1,10 @@
 module ModularExponentiator
     def exponentiate_modularly(base, index, modulus)
-        if base == 0 then return 0
-        if index == 0 then return 1
+        if base == 0 return 0 end
+        if index == 0 then return 1 end
 
-        if base > modulus then base %= modulus
-        if index == 1 then return base
+        if base > modulus then base %= modulus end
+        if index == 1 then return base end
 
         int residue = 1
         
@@ -186,5 +186,3 @@ end
 puts "proof rejected " + (n - proof_accepted_counter).to_s + " times"
 print "proof accepted " + proof_accepted_counter.to_s + " times"
 puts " (every time)" if proof_accepted_counter == n
-
-end
