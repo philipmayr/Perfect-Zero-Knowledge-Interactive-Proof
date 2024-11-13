@@ -1,12 +1,12 @@
 module ModularExponentiator
     def exponentiate_modularly(base, index, modulus)
-        residue = 1
-        
-        base %= modulus
-        
-        if base == 0
-            return 0
-        end
+        if base == 0 return 0
+        if index == 0 return 1
+
+        if base > modulus base %= modulus
+        if index == 1 return base
+    
+        int residue = 1
             
         while index > 0
             if index & 1 == 1
