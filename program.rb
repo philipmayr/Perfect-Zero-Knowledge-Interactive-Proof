@@ -1,10 +1,10 @@
 module ModularExponentiator
     def exponentiate_modularly(base, index, modulus)
-        if base == 0 return 0
-        if index == 0 return 1
+        if base == 0 then return 0
+        if index == 0 then return 1
 
-        if base > modulus base %= modulus
-        if index == 1 return base
+        if base > modulus then base %= modulus
+        if index == 1 then return base
 
         int residue = 1
         
@@ -49,8 +49,8 @@ end
 
 # Perfect Zero-Knowledge Proof
 
-include QuadraticResiduosityDeciders
 include ModularExponentiator
+include QuadraticResiduosityDeciders
 
 # get two primes
 print "Enter first prime number: "
