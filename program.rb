@@ -2,10 +2,10 @@ module ModularExponentiator
     def exponentiate_modularly(base, index, modulus)
         if base == 0 return 0 end
         if index == 0 then return 1 end
-
+        
         if base > modulus then base %= modulus end
         if index == 1 then return base end
-
+        
         int residue = 1
         
         while index > 0
@@ -17,26 +17,25 @@ module ModularExponentiator
             index >>= 1
         end
         
-        return residue;   
+        return residue;
     end
 end
 
 module QuadraticResiduosityDeciders
-    
-    # Prime Modulus Quadratic Residuosity Decider Algorithm
+    # Prime Modulus Quadratic Residuosity Decider
     
     def decide_prime_modulus_quadratic_residuosity(p, x)
         i = (p - 1) >> 1
         b = exponentiate_modularly(x, i, p)
         
         if b == 1
-            return true 
-        else 
+            return true
+        else
             return false
         end
     end
     
-    # Known Factorization Composite Modulus Quadratic Residuosity Decider Algorithm
+    # Known Factorization Composite Modulus Quadratic Residuosity Decider
     
     def decide_known_factorization_composite_modulus_quadratic_residuosity(p, q, x)
         if decide_prime_modulus_quadratic_residuosity(p, x) and decide_prime_modulus_quadratic_residuosity(q, x)
@@ -58,7 +57,6 @@ p = gets.chomp.to_i
 print "Enter second prime number: "
 q = gets.chomp.to_i
 
-# product of the two primes
 N = p * q
 
 puts
@@ -66,7 +64,7 @@ puts
 puts "N æ " + N.to_i.to_s + " æ " + p.to_s + " ⋅ " + q.to_s
 
 puts
-    
+
 # get square modulo N (quadratic residue)
 print "Enter a quadratic residue modulo " + N.to_s + ": "
 y = gets.chomp.to_i
@@ -125,7 +123,7 @@ n.times do |iteration|
     s = (r * r) % N
     
     puts "s: " + s.to_s
-
+    
     # verifier:
     
     # random value β ∈ {0, 1} (Beta is an random element of the set {0, 1})
@@ -144,7 +142,7 @@ n.times do |iteration|
     puts "z: " + z.to_i.to_s
     
     # verifier:
-
+    
     # compute z² modulo N
     z² = (z * z) % N
     
