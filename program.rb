@@ -126,7 +126,7 @@ n.times do |iteration|
     
     # verifier:
     
-    # random value β ∈ {0, 1} (Beta is an random element of the set {0, 1})
+    # random value β ∈ {0, 1} (Beta is a random element of the set {0, 1})
     β = rand(2)
     
     puts "β: " + β.to_s
