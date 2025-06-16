@@ -1,12 +1,15 @@
 module ModularExponentiator
     def exponentiate_modularly(base, index, modulus)
-        if base == 0 return 0 end
-        if index == 0 then return 1 end
+        return 0 if base == 0
+        return 1 if index == 0
         
-        if base > modulus then base %= modulus end
-        if index == 1 then return base end
+        if base > modulus
+            base %= modulus
+        end
         
-        int residue = 1
+        return base if index == 1
+        
+        residue = 1
         
         while index > 0
             if index & 1 == 1
@@ -17,28 +20,22 @@ module ModularExponentiator
             index >>= 1
         end
         
-        return residue;
+        return residue
     end
 end
 
-module QuadraticResiduosityDeciders
-    # Prime Modulus Quadratic Residuosity Decider
-    
-    def decide_prime_modulus_quadratic_residuosity(p, x)
-        i = (p - 1) >> 1
-        b = exponentiate_modularly(x, i, p)
+module QuadraticResiduosityValidators
+    # Prime Modulated Quadratic Residuosity Validator
+    def validate_prime_modulated_quadratic_residuosity(prime_modulus, quadratic_residue_candidate)
+        exponent = (prime_modulus - 1) >> 1
+        residue = exponentiate_modularly(quadratic_residue_candidate, exponent, prime_modulus)
         
-        if b == 1
-            return true
-        else
-            return false
-        end
+        return (residue == 1) ? true : false
     end
     
-    # Known Factorization Composite Modulus Quadratic Residuosity Decider
-    
-    def decide_known_factorization_composite_modulus_quadratic_residuosity(p, q, x)
-        if decide_prime_modulus_quadratic_residuosity(p, x) and decide_prime_modulus_quadratic_residuosity(q, x)
+    # Factorized Semiprime Modulated Quadratic Residuosity Validator
+    def validate_factorized_semi_prime_modulated_quadratic_residuosity(first_prime_factor, second_prime_factor, quadratic_residue_candidate)
+        if validate_prime_modulated_quadratic_residuosity(first_prime_factor, quadratic_residue_candidate) and validate_prime_modulated_quadratic_residuosity(second_prime_factor, quadratic_residue_candidate)
             return true
         else
             return false
@@ -49,7 +46,7 @@ end
 # Perfect Zero-Knowledge Proof
 
 include ModularExponentiator
-include QuadraticResiduosityDeciders
+include QuadraticResiduosityValidators
 
 # get two primes
 print "Enter first prime number: "
